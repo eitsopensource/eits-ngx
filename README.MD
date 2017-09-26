@@ -5,7 +5,7 @@
 * No arquivo `routing.module.ts`, adicione os seguintes imports:
 
 ```typescript
-import { BUNDLE_PATH, TranslateResolverService, EitsNgxModule } from 'eits-ng2';
+import { BUNDLE_PATH, TranslateResolverService, EitsNgxModule } from 'eits-ngx';
 ```
 
 * Na definição das rotas, envolva o array de rotas com `EitsNgxModule.wrapRoutes()`:
@@ -55,5 +55,5 @@ removê-lo do package.json.
 
 * No HTML: utilize o pipe `translate`. Na maioria dos casos não será necessário alterar o HTML.
 * Nos componentes:
-    * Adicione o import do helper de tradução: `import { translate } from 'eits-ng2';`
+    * Adicione o import do helper de tradução: `import { translate } from 'eits-ngx';`
     * Utilize a tradução chamando a função: `translate(key)`
