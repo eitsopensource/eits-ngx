@@ -1,0 +1,29 @@
+{
+  "name": "eits-ngx",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eitsopensource/eits-ngx"
+  },
+  "author": {
+    "name": "Eduardo Niehues",
+    "email": "eduardo.antonio@eits.com.br"
+  },
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/eitsopensource/eits-ngx/issues"
+  },
+  "main": "eits-ngx.umd.js",
+  "module": "eits-ngx.js",
+  "jsnext:main": "eits-ngx.js",
+  "typings": "eits-ngx.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
