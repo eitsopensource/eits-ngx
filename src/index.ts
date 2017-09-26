@@ -7,6 +7,7 @@ import { Routes } from '@angular/router';
 export * from './translate';
 export * from './translate-resolver.service';
 export * from './translate.pipe';
+export * from './broker';
 
 @NgModule({
     imports: [
