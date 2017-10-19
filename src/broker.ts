@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 export class Broker {
 
@@ -20,7 +20,7 @@ export class Broker {
      */
     public static of(serviceName: string): ServiceProxy {
 
-        if ( !window['dwr'].engine ) {
+        if ( !window['dwr'] ) {
             throw new Error('The DWR engine.js must be included in the main html.');
         }
 
