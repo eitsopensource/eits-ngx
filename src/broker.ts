@@ -1,11 +1,15 @@
+/**
+ * 
+ */
 export class Broker {
+
     /*-------------------------------------------------------------------
 	 *				 		     ATTRIBUTES
 	 *-------------------------------------------------------------------*/
     /**
      *
      */
-    private static services: Array<any> = [];
+    public static path: string;
 
     /*-------------------------------------------------------------------
 	 *				 		     BEHAVIORS
@@ -15,12 +19,12 @@ export class Broker {
      *
      */
     public static of(serviceName: string): ServiceProxy {
-        // is it already cached?
-        if (!Broker.services[serviceName]) {
-            Broker.services[serviceName] = new ServiceProxy(serviceName);
+
+        if ( !window['dwr'].engine ) {
+            throw new Error('The DWR engine.js must be included in the main html.');
         }
 
-        return Broker.services[serviceName];
+        return new ServiceProxy(serviceName);
     }
 }
 
@@ -28,6 +32,7 @@ export class Broker {
  *
  */
 export class ServiceProxy {
+
     /*-------------------------------------------------------------------
      *                           ATTRIBUTES
      *-------------------------------------------------------------------*/
@@ -35,11 +40,6 @@ export class ServiceProxy {
      *
      */
     private serviceName: string;
-
-    /**
-     *
-     */
-    private service: any;
 
     /*-------------------------------------------------------------------
      *                           CONSTRUCTOR
@@ -49,11 +49,6 @@ export class ServiceProxy {
      */
     public constructor(serviceName: string) {
         this.serviceName = serviceName;
-        this.service = window[serviceName];
-
-        if (!this.service) {
-            throw new Error('The service.js must be imported before use the broker in the main html.');
-        }
     }
 
     /*-------------------------------------------------------------------
@@ -63,9 +58,6 @@ export class ServiceProxy {
      *
      */
     public promise(methodName: string, ...args): Promise<any> {
-        if (!this.service[methodName]) {
-            throw new Error('The method \'' + methodName + '\' not exists in the service \'' + this.serviceName + '\'');
-        }
 
         return new Promise<any>((resolve, reject) => {
 
@@ -79,8 +71,13 @@ export class ServiceProxy {
                 }
             };
 
+            if ( args == null ) {
+                args = [];
+            }
+
             args.push(callback);
-            this.service[methodName].apply(this, args);
+
+            window['dwr'].engine._execute(Broker.path, this.serviceName, methodName, args);
         });
     }
 }
