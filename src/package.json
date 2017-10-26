@@ -1,6 +1,6 @@
 {
   "name": "eits-ngx",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/eitsopensource/eits-ngx"
@@ -21,8 +21,8 @@
   "jsnext:main": "eits-ngx.js",
   "typings": "eits-ngx.d.ts",
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
-    "@angular/router": "^4.0.0",
+    "@angular/core": "^5.0.0",
+    "@angular/router": "^5.0.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4",
 	"@stomp/stompjs": "~3.1.1",
