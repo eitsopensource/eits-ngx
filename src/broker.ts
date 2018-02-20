@@ -10,6 +10,7 @@ export class Broker {
      *
      */
     public static path: string;
+    public static fixTz = false;
 
     /*-------------------------------------------------------------------
 	 *				 		     BEHAVIORS
@@ -20,7 +21,7 @@ export class Broker {
      */
     public static of(serviceName: string): ServiceProxy {
 
-        if ( !window['dwr'] ) {
+        if (!window['dwr']) {
             throw new Error('The DWR engine.js must be included in the main html.');
         }
 
@@ -71,9 +72,16 @@ export class ServiceProxy {
                 }
             };
 
-            if ( args == null ) {
+            if (args == null) {
                 args = [];
             }
+
+            args = args.map(arg => {
+                if (Broker.fixTz && arg instanceof Date) {
+                    return new Date(arg.getTime() - (arg.getTimezoneOffset() * 60000)).toISOString();
+                }
+                return arg;
+            });
 
             args.push(callback);
 

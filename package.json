@@ -1,6 +1,6 @@
 {
   "name": "eits-ngx",
-  "version": "1.1.1",
+  "version": "1.1.5",
   "private": true,
   "scripts": {
     "build": "gulp build",
@@ -61,7 +61,7 @@
     "rxjs": "^5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0",
+    "typescript": "~2.4.0",
     "zone.js": "^0.8.4",
     "@stomp/stompjs": "~3.1.1",
     "sockjs-client": "~1.1.4",
